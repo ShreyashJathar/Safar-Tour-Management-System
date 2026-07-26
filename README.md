@@ -16,4 +16,4 @@
 - **User Dashboard**: Manage upcoming & completed bookings, cancel reservations, and curate a personal wishlist.
 - **Community Stories**: Read and share travel experiences, ratings, and guest testimonials.
 - **Dark/Light Mode**: Elegant theme switcher featuring glassmorphic designs and custom color palettes.
-### 🔐 Authentication & Security
+###
