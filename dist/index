@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="timezone" content="Asia/Kolkata" />
+    <title>Safar - Tours & Luxury Travel Booking Platform</title>
+    <meta name="description" content="Book boutique tour packages, luxury escapes, and custom itineraries. Manage bookings, explore destinations, and unlock travel rewards." />
+    <script type="module" crossorigin src="/assets/index-DVDCI59w.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DrPgUqSU.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
