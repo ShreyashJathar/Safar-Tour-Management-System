@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyATa5RGHLbkgLOwH_ang-zeUrEUU2edrek",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "safar-d6c76.firebaseapp.com",
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "safar-d6c76",
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "safar-d6c76.firebasestorage.app",
