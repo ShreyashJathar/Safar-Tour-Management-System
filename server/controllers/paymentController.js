@@ -2,8 +2,8 @@ import Razorpay from 'razorpay';
 import crypto from 'crypto';
 
 const razorpayInstance = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_TK6y872Uunu0Bm',
-  key_secret: process.env.RAZORPAY_KEY_SECRET || 'HsdTlMgMchTwa4AmqeT6E1ix'
+  key_id: process.env.RAZORPAY_KEY_ID || '',
+  key_secret: process.env.RAZORPAY_KEY_SECRET || ''
 });
 
 export async function createPaymentOrder(req, res) {
@@ -25,7 +25,7 @@ export async function createPaymentOrder(req, res) {
     res.status(200).json({
       success: true,
       order,
-      key: process.env.RAZORPAY_KEY_ID || 'rzp_test_TK6y872Uunu0Bm'
+      key: process.env.RAZORPAY_KEY_ID || ''
     });
   } catch (error) {
     console.error("[Razorpay] Order creation failed:", error);
@@ -41,7 +41,7 @@ export async function verifyPayment(req, res) {
       return res.status(400).json({ success: false, message: "Payment parameters missing" });
     }
 
-    const secret = process.env.RAZORPAY_KEY_SECRET || 'HsdTlMgMchTwa4AmqeT6E1ix';
+    const secret = process.env.RAZORPAY_KEY_SECRET || '';
     const body = `${razorpay_order_id}|${razorpay_payment_id}`;
 
     const expectedSignature = crypto
