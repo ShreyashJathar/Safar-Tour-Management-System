@@ -28,3 +28,7 @@ credentials*.json
 token*.json
 .env
 
+# Backend environment / credentials
+server/.env
+server/credentials*.json
+server/token*.json
