@@ -383,10 +383,7 @@ export async function sendWhatsAppOtpController(req, res) {
     return res.status(200).json({
       success: true,
       phone: cleanPhone,
-      message: dispatchResult?.apiDispatched
-        ? `WhatsApp OTP verification code sent to +${cleanPhone}.`
-        : `WhatsApp OTP verification code sent to +${cleanPhone}.`,
-      demoOtp: dispatchResult?.apiDispatched ? undefined : generatedOtp
+      message: `WhatsApp OTP verification code sent to +${cleanPhone}.`
     });
   } catch (err) {
     return res.status(500).json({
