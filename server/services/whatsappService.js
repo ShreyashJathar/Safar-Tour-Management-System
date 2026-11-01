@@ -7,10 +7,21 @@ export async function sendWhatsAppOtp(phone, otpCode) {
   // Normalize phone number: digits only (no +, -, spaces)
   const cleanPhone = phone.toString().replace(/\D/g, '');
   
-  const accessToken = process.env.WHATSAPP_ACCESS_TOKEN || "1398972322398934|aPfI-1wdzOGFYqsbnLJKgak50pQ";
+  const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
 
-  const messageText = `🌍 Safar Travel: Your verification code is *${otpCode}*. Valid for 10 minutes. Please do not share this code with anyone.`;
+  const messageText = `🌍 *Safar*
+
+Your one-time verification code is:
+
+🔑 *${otpCode}*
+
+⏱️ _Valid for 10 minutes. Please do not share this code with anyone._
+
+*The Safar Team* ✨
+Shreyash, Shashank, Raj 
+
+thank-you`;
 
   // Always log to server console for development & debugging
   console.log(`\n========================================================`);
