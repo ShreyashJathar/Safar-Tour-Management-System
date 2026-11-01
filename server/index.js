@@ -60,6 +60,25 @@ app.use('/api/payment', paymentRoutes);
 app.use('/api/system', systemRoutes);
 app.use('/api/db', systemRoutes);
 
+// Meta WhatsApp Cloud API Webhook Verification & Listener
+const WEBHOOK_VERIFY_TOKEN = process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN || 'safar_meta_webhook_2026';
+
+app.get('/api/webhook', (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  if (mode === 'subscribe' && token === WEBHOOK_VERIFY_TOKEN) {
+    console.log('[Meta Webhook Verified]');
+    return res.status(200).send(challenge);
+  }
+  return res.sendStatus(403);
+});
+
+app.post('/api/webhook', (req, res) => {
+  return res.status(200).send('EVENT_RECEIVED');
+});
+
 // Health check endpoint for fast status checks
 app.get('/api/health', async (req, res) => {
   const dbStatus = await checkDatabaseHealth();
