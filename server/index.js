@@ -72,19 +72,21 @@ app.get('/api/health', async (req, res) => {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const localDist = path.join(__dirname, 'dist');
-const parentDist = path.join(__dirname, '../dist');
+const localDist = path.resolve(__dirname, 'dist');
+const parentDist = path.resolve(__dirname, '../dist');
 const activeDist = fs.existsSync(localDist) ? localDist : (fs.existsSync(parentDist) ? parentDist : null);
 
 // Serve Vite frontend build
 if (activeDist) {
   console.log(`[Static Files] Serving frontend from: ${activeDist}`);
   app.use(express.static(activeDist));
-  app.get('*', (req, res, next) => {
+  
+  // SPA Fallback for client-side routing in Express 5
+  app.get('{*path}', (req, res, next) => {
     if (req.path.startsWith('/api')) {
       return next();
     }
-    res.sendFile(path.join(activeDist, 'index.html'));
+    res.sendFile('index.html', { root: activeDist });
   });
 } else {
   console.warn('[Static Files] No frontend dist folder found. Serving API landing page.');
