@@ -379,11 +379,14 @@ export async function sendWhatsAppOtpController(req, res) {
   whatsappOtpStore.set(cleanPhone, { otp: generatedOtp, expiresAt });
 
   try {
-    await dispatchWhatsAppOtp(cleanPhone, generatedOtp);
+    const dispatchResult = await dispatchWhatsAppOtp(cleanPhone, generatedOtp);
     return res.status(200).json({
       success: true,
       phone: cleanPhone,
-      message: `WhatsApp OTP verification code sent to +${cleanPhone}.`
+      message: dispatchResult?.apiDispatched
+        ? `WhatsApp OTP verification code sent to +${cleanPhone}.`
+        : `WhatsApp OTP verification code sent to +${cleanPhone}.`,
+      demoOtp: dispatchResult?.apiDispatched ? undefined : generatedOtp
     });
   } catch (err) {
     return res.status(500).json({

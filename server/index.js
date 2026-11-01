@@ -5,6 +5,10 @@ import dotenv from 'dotenv';
 import { initializeDatabase, checkDatabaseHealth } from './config/db.js';
 import { seedInitialData } from './seeds/seedData.js';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+
 // Route Handlers
 import authRoutes from './routes/authRoutes.js';
 import tourRoutes from './routes/tourRoutes.js';
@@ -65,6 +69,21 @@ app.get('/api/health', async (req, res) => {
     database: dbStatus
   });
 });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const distPath = path.join(__dirname, '../dist');
+
+// Serve Vite frontend build if dist folder exists
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
 
 // 404 Route handler for API endpoints
 app.use((req, res, next) => {
