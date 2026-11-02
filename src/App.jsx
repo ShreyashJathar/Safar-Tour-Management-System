@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import TripSidebar from "./components/TripSidebar";
