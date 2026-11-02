@@ -35,34 +35,6 @@ export default function Navbar({
             </div>
             <span className="logo-text">Sa<span>far</span></span>
           </div>
-
-          {/* Quick Category Nav */}
-          <nav className="header-quick-nav">
-            <button 
-              className={`quick-nav-pill ${currentView === "explore-hotels" ? "active" : ""}`}
-              onClick={() => setCurrentView("explore-hotels")}
-            >
-              Hotels
-            </button>
-            <button 
-              className={`quick-nav-pill ${currentView === "explore-flights" ? "active" : ""}`}
-              onClick={() => setCurrentView("explore-flights")}
-            >
-              Flights
-            </button>
-            <button 
-              className={`quick-nav-pill ${currentView === "explore" ? "active" : ""}`}
-              onClick={() => setCurrentView("explore")}
-            >
-              Luxury Tours
-            </button>
-            <button 
-              className={`quick-nav-pill ${currentView === "explore-places" ? "active" : ""}`}
-              onClick={() => setCurrentView("explore-places")}
-            >
-              Attractions
-            </button>
-          </nav>
         </div>
 
         {/* Right Section: Trip.com Top Bar Features */}
