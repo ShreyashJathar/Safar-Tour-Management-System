@@ -17,10 +17,6 @@ export default function Navbar({
   const [currencyDropdownOpen, setCurrencyDropdownOpen] = useState(false);
   const { currency, setCurrency, currencies } = useCurrency();
 
-  const handleInstallApp = () => {
-    alert("📱 Safar Mobile App: To install on your device, tap Share / Settings in your browser and select 'Add to Home Screen'!");
-  };
-
   return (
     <header className="main-header trip-top-header">
       <div className="header-container">
@@ -39,15 +35,6 @@ export default function Navbar({
 
         {/* Right Section: Trip.com Top Bar Features */}
         <div className="header-actions trip-header-actions">
-          {/* App Download Link */}
-          <button 
-            className="header-text-link"
-            onClick={handleInstallApp}
-            title="Install Mobile App"
-          >
-            📱 <span className="hide-on-mobile">App</span>
-          </button>
-
           {/* List Your Property */}
           <button 
             className="header-text-link hide-on-mobile"
