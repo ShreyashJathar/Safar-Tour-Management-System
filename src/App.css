@@ -1308,3 +1308,33 @@
     justify-content: center !important;
   }
 }
+
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid var(--border-color, #e2e8f0) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  padding: 0 !important;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.1) !important;
+  transform: scale(1.08) !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
