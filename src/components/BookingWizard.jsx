@@ -102,14 +102,20 @@ export default function BookingWizard({
     const code = promoCodeInput.trim().toUpperCase();
     if (!code) return;
 
-    if (code === "SAFAR2026") {
+    if (code === "SAFAR10") {
+      setAppliedPromo({ code: "SAFAR10", type: "percent", amount: 10, label: "10% Trip.com Special Discount" });
+    } else if (code === "FIRSTTRIP") {
+      setAppliedPromo({ code: "FIRSTTRIP", type: "flat", amount: 500, label: "₹500 New Traveler Welcome Coupon" });
+    } else if (code === "LUXURY2026") {
+      setAppliedPromo({ code: "LUXURY2026", type: "percent", amount: 15, label: "15% Exclusive Luxury Discount" });
+    } else if (code === "SAFAR2026") {
       setAppliedPromo({ code: "SAFAR2026", type: "flat", amount: 1000, label: "₹1,000 Special Discount" });
     } else if (code === "SHREYASH") {
       setAppliedPromo({ code: "SHREYASH", type: "flat", amount: 1500, label: "₹1,500 Admin VIP Discount" });
     } else if (code === "WELCOME10") {
       setAppliedPromo({ code: "WELCOME10", type: "percent", amount: 10, label: "10% Welcome Discount" });
     } else {
-      setPromoError("Invalid or expired coupon code. Try SAFAR2026 or SHREYASH");
+      setPromoError("Invalid or expired coupon code. Try SAFAR10, FIRSTTRIP, or LUXURY2026");
     }
   };
 

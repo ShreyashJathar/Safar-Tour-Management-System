@@ -97,8 +97,11 @@ export default function LoginPage({ onLoginSuccess }) {
     setResetDemoOtp("");
   };
 
-  const completeLogin = (userObj) => {
+  const completeLogin = (userObj, token = null) => {
     localStorage.setItem("currentUser", JSON.stringify(userObj));
+    if (token) {
+      localStorage.setItem("authToken", token);
+    }
     onLoginSuccess(userObj);
   };
 
@@ -163,11 +166,11 @@ export default function LoginPage({ onLoginSuccess }) {
 
       const loggedUser = {
         ...data.user,
-        username: data.user.fullName.split(' ')[0],
-        role: "Customer"
+        username: data.user.fullName ? data.user.fullName.split(' ')[0] : 'Traveler',
+        role: data.user.role || "Customer"
       };
 
-      completeLogin(loggedUser);
+      completeLogin(loggedUser, data.token);
     } catch (err) {
       const mockCustomer = {
         username: username.split("@")[0],
@@ -244,7 +247,7 @@ export default function LoginPage({ onLoginSuccess }) {
         return;
       }
 
-      completeLogin({ ...newUser, id: data.user.id });
+      completeLogin({ ...newUser, id: data.user.id }, data.token);
     } catch (err) {
       completeLogin(newUser);
     }
@@ -287,7 +290,7 @@ export default function LoginPage({ onLoginSuccess }) {
       setIsSendingResetOtp(false);
       // Offline fallback
       setResetOtpStep("otp");
-      const fallbackCode = Math.floor(1000 + Math.random() * 9000).toString();
+      const fallbackCode = Math.floor(100000 + Math.random() * 900000).toString();
       setResetDemoOtp(fallbackCode);
       setSuccessMessage(`Offline Mode: Reset code generated for ${email}`);
     }
@@ -299,8 +302,8 @@ export default function LoginPage({ onLoginSuccess }) {
     setError("");
     setSuccessMessage("");
 
-    if (!resetOtpCode || resetOtpCode.trim().length !== 4) {
-      setError("Please enter the 4-digit reset code received on your Gmail.");
+    if (!resetOtpCode || resetOtpCode.trim().length !== 6) {
+      setError("Please enter the 6-digit reset code received on your Gmail.");
       return;
     }
 
@@ -422,7 +425,7 @@ export default function LoginPage({ onLoginSuccess }) {
       setIsSendingOtp(false);
       // Offline mode fallback code
       setOtpStep("otp");
-      const fallbackCode = Math.floor(1000 + Math.random() * 9000).toString();
+      const fallbackCode = Math.floor(100000 + Math.random() * 900000).toString();
       setDemoOtpHint(fallbackCode);
       setOtpNotice(`Offline Mode: Verification code generated for ${userEmail}`);
     }
@@ -433,8 +436,8 @@ export default function LoginPage({ onLoginSuccess }) {
     setOtpError("");
 
     const code = otpCode.trim();
-    if (!code || code.length !== 4) {
-      setOtpError("Please enter the 4-digit verification code.");
+    if (!code || code.length !== 6) {
+      setOtpError("Please enter the 6-digit verification code.");
       return;
     }
 
@@ -484,7 +487,7 @@ export default function LoginPage({ onLoginSuccess }) {
 
       setIsVerifyingOtp(false);
       resetGoogleModal();
-      completeLogin(googleUser);
+      completeLogin(googleUser, data?.token);
     } catch (err) {
       if (demoOtpHint && code === demoOtpHint) {
         const nameFromEmail = userEmail.split("@")[0].replace(/[._-]/g, " ");
@@ -549,7 +552,7 @@ export default function LoginPage({ onLoginSuccess }) {
       }
 
       setWhatsappStep("otp");
-      setWhatsappNotice(`4-digit verification code sent to your WhatsApp (${whatsappCountryCode} ${whatsappPhone})`);
+      setWhatsappNotice(`6-digit verification code sent to your WhatsApp (${whatsappCountryCode} ${whatsappPhone})`);
       setWhatsappCountdown(60);
     } catch (err) {
       setIsSendingWhatsAppOtp(false);
@@ -562,8 +565,8 @@ export default function LoginPage({ onLoginSuccess }) {
     setWhatsappError("");
 
     const code = whatsappOtpCode.trim();
-    if (!code || code.length !== 4) {
-      setWhatsappError("Please enter the 4-digit verification code.");
+    if (!code || code.length !== 6) {
+      setWhatsappError("Please enter the 6-digit verification code.");
       return;
     }
 
@@ -597,7 +600,7 @@ export default function LoginPage({ onLoginSuccess }) {
 
       setIsVerifyingWhatsAppOtp(false);
       resetWhatsAppModal();
-      completeLogin(loggedUser);
+      completeLogin(loggedUser, data?.token);
     } catch (err) {
       setIsVerifyingWhatsAppOtp(false);
       setWhatsappError("Network error. Could not verify OTP code.");
@@ -852,10 +855,10 @@ export default function LoginPage({ onLoginSuccess }) {
                   </span>
                   <input 
                     type="text" 
-                    placeholder="4-digit OTP Code" 
+                    placeholder="6-digit OTP Code" 
                     value={resetOtpCode}
-                    onChange={(e) => setResetOtpCode(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                    maxLength={4}
+                    onChange={(e) => setResetOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                    maxLength={6}
                     style={{ letterSpacing: "6px", fontSize: "1.2rem", fontWeight: "bold", textAlign: "center" }}
                     required 
                     autoFocus
@@ -982,10 +985,10 @@ export default function LoginPage({ onLoginSuccess }) {
                 <div className="google-input-wrapper">
                   <input 
                     type="text" 
-                    placeholder="Enter 4-digit code" 
+                    placeholder="Enter 6-digit code" 
                     value={otpCode}
-                    onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                    maxLength={4}
+                    onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                    maxLength={6}
                     style={{
                       letterSpacing: "8px",
                       fontSize: "1.3rem",
@@ -1120,10 +1123,10 @@ export default function LoginPage({ onLoginSuccess }) {
                   <input 
                     type="text" 
                     className="whatsapp-otp-input"
-                    placeholder="• • • •" 
+                    placeholder="• • • • • •" 
                     value={whatsappOtpCode}
-                    onChange={(e) => setWhatsappOtpCode(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                    maxLength={4}
+                    onChange={(e) => setWhatsappOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                    maxLength={6}
                     autoComplete="one-time-code"
                     autoFocus
                     required 

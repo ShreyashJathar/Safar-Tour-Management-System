@@ -182,3 +182,1236 @@
     border-right-color: var(--border);
   }
 }
+
+
+/* ==========================================================================
+   TRIP.COM PORTAL TRANSFORMATION STYLES
+   ========================================================================== */
+
+/* Top Header Extensions */
+.trip-top-header {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  background: var(--bg-surface, #ffffff);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-left-cluster {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-quick-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-nav-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary, #64748b);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-nav-pill:hover {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.quick-nav-pill.active {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.trip-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-text-link {
+  background: none;
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary, #1e293b);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.header-text-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #2563eb;
+}
+
+/* Currency Selector */
+.currency-selector-wrapper {
+  position: relative;
+}
+
+.currency-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-primary, #0f172a);
+}
+
+.currency-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  z-index: 1000;
+}
+
+.currency-menu-header {
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 4px;
+}
+
+.currency-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.currency-option:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.currency-option.active {
+  background: rgba(37, 99, 235, 0.12);
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.curr-flag {
+  font-size: 1.1rem;
+}
+
+.curr-code {
+  font-weight: 700;
+  min-width: 36px;
+}
+
+.curr-name {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+.trip-primary-signin-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.trip-primary-signin-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   TRIP.COM PORTAL TWO-COLUMN LAYOUT
+   ========================================================================== */
+
+.trip-main-portal-container {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  max-width: 1540px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Left Vertical Sidebar */
+.trip-sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border, #e2e8f0);
+  background: var(--bg-surface, #ffffff);
+  padding: 16px 8px;
+}
+
+.trip-sidebar-inner {
+  position: sticky;
+  top: 86px;
+}
+
+.trip-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trip-nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary, #334155);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.trip-nav-btn:hover {
+  background: rgba(37, 99, 235, 0.05);
+  color: #2563eb;
+}
+
+.trip-nav-btn.active {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.trip-nav-btn.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: #2563eb;
+  border-radius: 0 4px 4px 0;
+}
+
+.trip-nav-icon {
+  font-size: 1.15rem;
+  width: 22px;
+  text-align: center;
+}
+
+.trip-nav-label {
+  flex: 1;
+}
+
+.trip-new-badge {
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Main Content Flow alongside Sidebar */
+.trip-main-content-flow {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 32px 48px;
+}
+
+/* ==========================================================================
+   TRIP.COM HERO & SEARCH CONSOLE
+   ========================================================================== */
+
+.trip-hero-section {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  border-radius: 20px;
+  padding: 36px 36px 48px;
+  color: #ffffff;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+}
+
+.trip-hero-headline {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.trip-guarantee-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e0f2fe;
+  margin-bottom: 24px;
+}
+
+.trip-guarantee-ribbon .divider {
+  opacity: 0.5;
+}
+
+/* White Floating Search Box Card */
+.trip-search-box-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.2);
+  padding: 16px 20px 14px;
+  color: #0f172a;
+}
+
+.trip-service-tabs-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+
+.trip-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.trip-tab-btn:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+.trip-tab-btn.active {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.trip-search-inputs-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.search-input-unit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.search-input-unit label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.search-input-unit .input-flex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-input-unit input,
+.search-input-unit select {
+  border: none;
+  background: transparent;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+  width: 100%;
+}
+
+.date-sep {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.trip-search-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  flex-shrink: 0;
+}
+
+.trip-search-action-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.trip-search-bottom-strip {
+  padding-top: 12px;
+  text-align: right;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   PROMO CARDS SHELF
+   ========================================================================== */
+
+.trip-promo-shelf {
+  margin-top: 28px;
+}
+
+.trip-promo-shelf .shelf-header {
+  margin-bottom: 14px;
+}
+
+.trip-promo-shelf .shelf-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.trip-promo-shelf .shelf-subtitle {
+  font-size: 0.82rem;
+  color: #dbeafe;
+}
+
+.promo-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.promo-deal-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 16px;
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.deal-discount {
+  display: inline-block;
+  align-self: flex-start;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.deal-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.deal-info p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.copy-code-btn {
+  background: #f1f5f9;
+  border: 1px dashed #2563eb;
+  color: #2563eb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.copy-code-btn:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.copy-code-btn.copied {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   SUPPORT & FIND BOOKING MODALS
+   ========================================================================== */
+
+.trip-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.trip-modal-card {
+  background: var(--bg-surface, #ffffff);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.trip-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+}
+
+.trip-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trip-modal-title .modal-icon {
+  font-size: 1.8rem;
+}
+
+.trip-modal-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.trip-modal-title p {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.trip-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #94a3b8;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.trip-modal-body {
+  padding: 24px;
+}
+
+.support-channels-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.support-card {
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+  background: var(--bg-card, #f8fafc);
+  transition: all 0.2s ease;
+}
+
+.support-card.highlighted {
+  border-color: #25d366;
+  background: rgba(37, 211, 102, 0.05);
+  cursor: pointer;
+}
+
+.support-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.support-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.support-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+}
+
+.support-card p {
+  margin: 0 0 12px 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.support-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.support-action-btn.wa-btn {
+  background: #25d366;
+  color: #ffffff;
+}
+
+.support-action-btn.phone-btn {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.support-action-btn.email-btn {
+  background: #475569;
+  color: #ffffff;
+}
+
+.host-property-callout {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px dashed #2563eb;
+  border-radius: 10px;
+}
+
+.host-property-callout .host-icon {
+  font-size: 1.6rem;
+}
+
+.host-property-callout h4 {
+  margin: 0 0 2px 0;
+  font-size: 0.9rem;
+}
+
+.host-property-callout p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.host-cta-btn {
+  margin-left: auto;
+  white-space: nowrap;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+/* Find Booking Form */
+.find-input-box {
+  display: flex;
+  gap: 10px;
+}
+
+.find-input-box input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.find-submit-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.found-booking-card {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.found-booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.found-badge {
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.found-id {
+  font-family: monospace;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.found-booking-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.found-details-row {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.view-ticket-action-btn {
+  width: 100%;
+  padding: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   TICKET VOUCHER & BOARDING PASS MODAL
+   ========================================================================== */
+
+.ticket-modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 680px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  color: #0f172a;
+}
+
+.ticket-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.ticket-header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.voucher-icon {
+  font-size: 1.8rem;
+}
+
+.ticket-header-title h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.ticket-header-title p {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.ticket-printable-document {
+  padding: 28px;
+  background: #ffffff;
+}
+
+.voucher-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.voucher-brand .brand-logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0f172a;
+  display: block;
+}
+
+.voucher-brand .brand-logo span {
+  color: #00df89;
+}
+
+.voucher-brand .brand-sub {
+  font-size: 0.78rem;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.voucher-badge {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+}
+
+.voucher-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.voucher-grid-3 {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.voucher-block .v-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.voucher-block .v-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.voucher-block .v-value.prominent {
+  font-size: 1.2rem;
+}
+
+.voucher-block .v-value.code-ref {
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #2563eb;
+}
+
+.voucher-block .v-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.voucher-block .v-sub.status-confirmed {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.voucher-block.align-right {
+  text-align: right;
+}
+
+.voucher-divider {
+  height: 1px;
+  border-top: 1px dashed #cbd5e1;
+  margin: 16px 0;
+}
+
+.voucher-financial-summary {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.fin-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #64748b;
+  padding: 4px 0;
+}
+
+.fin-row.total {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 6px;
+  padding-top: 8px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.fin-row .paid-amount {
+  color: #16a34a;
+  font-size: 1.1rem;
+}
+
+.voucher-footer-strip {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 18px;
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.qr-caption {
+  font-size: 0.65rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.voucher-terms {
+  flex: 1;
+}
+
+.voucher-terms p {
+  margin: 0 0 4px 0;
+  font-size: 0.72rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.ticket-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   GENIE AI FLOATING CHATBOT
+   ========================================================================== */
+
+.safar-genie-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9990;
+}
+
+.genie-floating-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #1e3a8a;
+  color: #ffffff;
+  border: 3px solid #60a5fa;
+  border-radius: 50px;
+  padding: 10px 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.genie-floating-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(30, 58, 138, 0.5);
+  background: #1e40af;
+}
+
+.genie-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.genie-pill-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.genie-chat-window {
+  width: 360px;
+  height: 480px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+}
+
+.genie-chat-header {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.genie-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.genie-avatar {
+  font-size: 1.5rem;
+}
+
+.genie-header-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.genie-header-info p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #93c5fd;
+}
+
+.genie-close-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.genie-chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f8fafc;
+}
+
+.genie-bubble-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.genie-bubble-row.user {
+  justify-content: flex-end;
+}
+
+.genie-bubble-avatar {
+  font-size: 1.1rem;
+}
+
+.genie-bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.genie-bubble.genie {
+  background: #ffffff;
+  color: #1e293b;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.genie-bubble.user {
+  background: #2563eb;
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+}
+
+.genie-chat-input-bar {
+  display: flex;
+  padding: 10px 12px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  gap: 8px;
+}
+
+.genie-chat-input-bar input {
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.genie-send-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   PRINT STYLES FOR BOARDING PASS & VOUCHER
+   ========================================================================== */
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #safar-printable-pass,
+  #safar-printable-pass * {
+    visibility: visible;
+  }
+  #safar-printable-pass {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .trip-sidebar {
+    display: none;
+  }
+  .trip-main-content-flow {
+    padding: 16px;
+  }
+  .trip-search-inputs-row {
+    flex-direction: column;
+  }
+  .search-input-unit {
+    width: 100%;
+  }
+  .trip-search-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import TripSidebar from "./components/TripSidebar";
+import TripHero from "./components/TripHero";
+import SupportModal from "./components/SupportModal";
+import FindBookingModal from "./components/FindBookingModal";
+import TicketVoucherModal from "./components/TicketVoucherModal";
+import GenieChatbot from "./components/GenieChatbot";
+import { CurrencyProvider } from "./context/CurrencyContext";
 import TourCard from "./components/TourCard";
 import HotelCard from "./components/HotelCard";
 import TourDetailsModal from "./components/TourDetailsModal";
@@ -125,6 +132,9 @@ export default function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [activeBookingData, setActiveBookingData] = useState(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [supportModalOpen, setSupportModalOpen] = useState(false);
+  const [findBookingModalOpen, setFindBookingModalOpen] = useState(false);
+  const [activeVoucherBooking, setActiveVoucherBooking] = useState(null);
   
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
@@ -664,156 +674,142 @@ export default function App() {
 
   return (
     <ErrorBoundary onReset={handleResetAfterCrash}>
-      <div className="app-layout">
-        {/* Navigation Header */}
-        <Navbar 
-          currentUser={currentUser} 
-          onOpenAuth={() => setCurrentView("login")}
-          onLogout={handleLogout}
-          currentView={currentView}
-          setCurrentView={setCurrentView}
-          wishlistCount={wishlist.length}
-          darkMode={darkMode}
-          toggleDarkMode={() => setDarkMode(!darkMode)}
-        />
+      <CurrencyProvider>
+        <div className="app-layout">
+          {/* Navigation Header */}
+          <Navbar 
+            currentUser={currentUser} 
+            onOpenAuth={() => setCurrentView("login")}
+            onLogout={handleLogout}
+            currentView={currentView}
+            setCurrentView={setCurrentView}
+            wishlistCount={wishlist.length}
+            darkMode={darkMode}
+            toggleDarkMode={() => setDarkMode(!darkMode)}
+            onOpenSupport={() => setSupportModalOpen(true)}
+            onOpenFindBookings={() => setFindBookingModalOpen(true)}
+          />
 
-        {/* Main Content Router */}
-        <main className="app-main">
-          
-          {/* Explore Tours View */}
-          {currentView === "explore" && (
-            <div className="explore-view animate-fade">
-              <Hero 
-                currentView={currentView}
-                setCurrentView={setCurrentView}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-                maxPrice={maxPrice}
-                setMaxPrice={setMaxPrice}
-                maxPriceLimit={maxTourPriceLimit}
-              />
+          {/* Main Content Router */}
+          <main className="app-main">
+            
+            {/* Trip.com Unified Exploration Portal (Hotels, Flights, Tours, Places) */}
+            {["explore", "explore-hotels", "explore-places", "explore-flights"].includes(currentView) ? (
+              <div className="trip-main-portal-container animate-fade">
+                <TripSidebar 
+                  currentView={currentView}
+                  setCurrentView={setCurrentView}
+                  onOpenPlanner={() => alert("Trip.Planner AI: Ready to assist! Ask GENIE at the bottom right.")}
+                />
 
-              <section className="explore-tours-section">
-                <div className="section-header-row">
-                  <div className="section-titles">
-                    <h2>Trending Voyages & Tours</h2>
-                    <p className="section-subtitle">Specially curated packages matching your filters ({filteredTours.length} found)</p>
+                <div className="trip-main-content-flow">
+                  <TripHero 
+                    currentView={currentView}
+                    setCurrentView={setCurrentView}
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                    checkIn={checkIn}
+                    setCheckIn={setCheckIn}
+                    checkOut={checkOut}
+                    setCheckOut={setCheckOut}
+                    guestsCount={guestsCount}
+                    setGuestsCount={setGuestsCount}
+                    onOpenAuth={() => setCurrentView("login")}
+                    currentUser={currentUser}
+                  />
+
+                  <div id="main-travel-inventory">
+                    {/* Explore Tours View */}
+                    {currentView === "explore" && (
+                      <section className="explore-tours-section">
+                        <div className="section-header-row">
+                          <div className="section-titles">
+                            <h2>Trending Voyages & Tours</h2>
+                            <p className="section-subtitle">Specially curated packages matching your filters ({filteredTours.length} found)</p>
+                          </div>
+                        </div>
+
+                        {filteredTours.length > 0 ? (
+                          <div className="tours-grid">
+                            {filteredTours.map((tour) => (
+                              <TourCard 
+                                key={tour.id} 
+                                tour={tour} 
+                                onSelectTour={setSelectedTour}
+                                isWishlisted={wishlist.some(w => (typeof w === 'object' ? w.id === tour.id : w === tour.id))}
+                                onToggleWishlist={handleToggleWishlist}
+                                currentUser={currentUser}
+                                onEditTour={handleEditTourFromCardOrModal}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="dashboard-empty-state">
+                            <p>No tours match your search filters. Try broadening your budget or queries!</p>
+                          </div>
+                        )}
+
+                        {/* Community Stories */}
+                        <CommunityStories onSelectTour={setSelectedTour} />
+                      </section>
+                    )}
+
+                    {/* Explore Hotels View */}
+                    {currentView === "explore-hotels" && (
+                      <section className="explore-tours-section">
+                        <div className="section-header-row">
+                          <div className="section-titles">
+                            <h2>Premium Hotels & Retreats</h2>
+                            <p className="section-subtitle">Handpicked luxury hotels and chalets ({filteredHotels.length} found)</p>
+                          </div>
+                        </div>
+
+                        {filteredHotels.length > 0 ? (
+                          <div className="tours-grid">
+                            {filteredHotels.map((hotel) => (
+                              <HotelCard 
+                                key={hotel.id} 
+                                hotel={hotel} 
+                                onSelectHotel={setSelectedHotel}
+                                isWishlisted={wishlist.some(w => (typeof w === 'object' ? w.id === hotel.id : w === hotel.id))}
+                                onToggleWishlist={handleToggleWishlist}
+                                currentUser={currentUser}
+                                onEditHotel={handleEditHotelFromCardOrModal}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="dashboard-empty-state">
+                            <p>No hotels match your filters. Try increasing your maximum nightly budget!</p>
+                          </div>
+                        )}
+                      </section>
+                    )}
+
+                    {/* Explore Places & Attractions View */}
+                    {currentView === "explore-places" && (
+                      <PlacesExplorer 
+                        places={places}
+                        onSelectPlace={setSelectedPlace}
+                        onToggleWishlist={handleToggleWishlist}
+                        wishlist={wishlist}
+                        currentUser={currentUser}
+                      />
+                    )}
+
+                    {/* Explore Flights View */}
+                    {currentView === "explore-flights" && (
+                      <FlightsExplorer 
+                        flights={flights}
+                        onStartBooking={handleStartBooking}
+                      />
+                    )}
                   </div>
                 </div>
-
-                {filteredTours.length > 0 ? (
-                  <div className="tours-grid">
-                    {filteredTours.map((tour) => (
-                      <TourCard 
-                        key={tour.id} 
-                        tour={tour} 
-                        onSelectTour={setSelectedTour}
-                        isWishlisted={wishlist.some(w => (typeof w === 'object' ? w.id === tour.id : w === tour.id))}
-                        onToggleWishlist={handleToggleWishlist}
-                        currentUser={currentUser}
-                        onEditTour={handleEditTourFromCardOrModal}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="dashboard-empty-state">
-                    <p>No tours match your search filters. Try broadening your budget or queries!</p>
-                  </div>
-                )}
-
-                {/* Community Stories */}
-                <CommunityStories onSelectTour={setSelectedTour} />
-              </section>
-            </div>
-          )}
-
-          {/* Explore Hotels View */}
-          {currentView === "explore-hotels" && (
-            <div className="explore-view animate-fade">
-              <Hero 
-                currentView={currentView}
-                setCurrentView={setCurrentView}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-                maxPrice={maxPrice}
-                setMaxPrice={setMaxPrice}
-                maxPriceLimit={maxHotelPriceLimit}
-                
-                checkIn={checkIn}
-                setCheckIn={setCheckIn}
-                checkOut={checkOut}
-                setCheckOut={setCheckOut}
-                guestsCount={guestsCount}
-                setGuestsCount={setGuestsCount}
-              />
-
-              <section className="explore-tours-section">
-                <div className="section-header-row">
-                  <div className="section-titles">
-                    <h2>Premium Hotels & Retreats</h2>
-                    <p className="section-subtitle">Handpicked luxury hotels and chalets ({filteredHotels.length} found)</p>
-                  </div>
-                </div>
-
-                {filteredHotels.length > 0 ? (
-                  <div className="tours-grid">
-                    {filteredHotels.map((hotel) => (
-                      <HotelCard 
-                        key={hotel.id} 
-                        hotel={hotel} 
-                        onSelectHotel={setSelectedHotel}
-                        isWishlisted={wishlist.some(w => (typeof w === 'object' ? w.id === hotel.id : w === hotel.id))}
-                        onToggleWishlist={handleToggleWishlist}
-                        currentUser={currentUser}
-                        onEditHotel={handleEditHotelFromCardOrModal}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="dashboard-empty-state">
-                    <p>No hotels match your filters. Try increasing your maximum nightly budget!</p>
-                  </div>
-                )}
-              </section>
-            </div>
-          )}
-
-          {/* Explore Places & Attractions View */}
-          {currentView === "explore-places" && (
-            <div className="explore-view animate-fade">
-              <Hero 
-                currentView={currentView}
-                setCurrentView={setCurrentView}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-              />
-              <PlacesExplorer 
-                places={places}
-                onSelectPlace={setSelectedPlace}
-                onToggleWishlist={handleToggleWishlist}
-                wishlist={wishlist}
-                currentUser={currentUser}
-              />
-            </div>
-          )}
-
-          {/* Explore Flights View */}
-          {currentView === "explore-flights" && (
-            <div className="explore-view animate-fade">
-              <Hero 
-                currentView={currentView}
-                setCurrentView={setCurrentView}
-              />
-              <FlightsExplorer 
-                flights={flights}
-                onStartBooking={handleStartBooking}
-              />
-            </div>
-          )}
+              </div>
+            ) : null}
 
           {currentView === "dashboard" && currentUser && (
             <Dashboard 
@@ -952,6 +948,32 @@ export default function App() {
           />
         )}
 
+        {/* Support Modal */}
+        <SupportModal 
+          isOpen={supportModalOpen} 
+          onClose={() => setSupportModalOpen(false)} 
+        />
+
+        {/* Find Booking Modal */}
+        <FindBookingModal 
+          isOpen={findBookingModalOpen} 
+          onClose={() => setFindBookingModalOpen(false)} 
+          bookings={bookings}
+          onSelectBooking={(b) => setActiveVoucherBooking(b)}
+        />
+
+        {/* Boarding Pass / E-Ticket Voucher Modal */}
+        <TicketVoucherModal 
+          booking={activeVoucherBooking} 
+          onClose={() => setActiveVoucherBooking(null)} 
+        />
+
+        {/* Floating Genie AI Concierge */}
+        <GenieChatbot onSelectDestination={(dest) => {
+          setSearchQuery(dest);
+          setCurrentView("explore");
+        }} />
+
         {/* Floating Toast Notification Containers */}
         {toasts.length > 0 && (
           <div className="toast-container">
@@ -989,6 +1011,7 @@ export default function App() {
           </div>
         )}
       </div>
+      </CurrencyProvider>
     </ErrorBoundary>
   );
 }
