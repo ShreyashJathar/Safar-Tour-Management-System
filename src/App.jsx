@@ -7,7 +7,6 @@ import TripHero from "./components/TripHero";
 import SupportModal from "./components/SupportModal";
 import FindBookingModal from "./components/FindBookingModal";
 import TicketVoucherModal from "./components/TicketVoucherModal";
-import GenieChatbot from "./components/GenieChatbot";
 import { CurrencyProvider } from "./context/CurrencyContext";
 import TourCard from "./components/TourCard";
 import HotelCard from "./components/HotelCard";
@@ -700,7 +699,7 @@ export default function App() {
                 <TripSidebar 
                   currentView={currentView}
                   setCurrentView={setCurrentView}
-                  onOpenPlanner={() => alert("Trip.Planner AI: Ready to assist! Ask GENIE at the bottom right.")}
+                  onOpenPlanner={() => alert("Trip.Planner: Plan your custom itinerary, luxury stays, and daily routes with Safar!")}
                 />
 
                 <div className="trip-main-content-flow">
@@ -968,12 +967,6 @@ export default function App() {
           booking={activeVoucherBooking} 
           onClose={() => setActiveVoucherBooking(null)} 
         />
-
-        {/* Floating Genie AI Concierge */}
-        <GenieChatbot onSelectDestination={(dest) => {
-          setSearchQuery(dest);
-          setCurrentView("explore");
-        }} />
 
         {/* Floating Toast Notification Containers */}
         {toasts.length > 0 && (
