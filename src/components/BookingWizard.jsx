@@ -103,7 +103,7 @@ export default function BookingWizard({
     if (!code) return;
 
     if (code === "SAFAR10") {
-      setAppliedPromo({ code: "SAFAR10", type: "percent", amount: 10, label: "10% Trip.com Special Discount" });
+      setAppliedPromo({ code: "SAFAR10", type: "percent", amount: 10, label: "10% Safar Special Discount" });
     } else if (code === "FIRSTTRIP") {
       setAppliedPromo({ code: "FIRSTTRIP", type: "flat", amount: 500, label: "₹500 New Traveler Welcome Coupon" });
     } else if (code === "LUXURY2026") {

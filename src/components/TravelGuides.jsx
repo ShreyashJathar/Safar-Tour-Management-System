@@ -9,7 +9,7 @@ export default function TravelGuides({ onExploreCity }) {
     <div className="travel-guides-container section-container">
       {/* Header */}
       <div className="section-header-centered">
-        <span className="section-subtitle-badge">🗺️ Trip.com Destination Guides</span>
+        <span className="section-subtitle-badge">🗺️ Safar Destination Guides</span>
         <h2 className="section-title">Travel Guides & Place Itineraries</h2>
         <p className="section-description">
           Curated insider travel guides, top attractions, recommended 3-day itineraries, and daily budget tips.

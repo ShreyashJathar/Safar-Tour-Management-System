@@ -12,7 +12,7 @@ export default function TripSidebar({ currentView, setCurrentView, onOpenPlanner
     { id: "explore-group", label: "Group Tours", icon: "🌴" },
     { 
       id: "trip-planner", 
-      label: "Trip.Planner", 
+      label: "Safar Planner", 
       icon: "🔀", 
       badge: "New",
       action: onOpenPlanner 

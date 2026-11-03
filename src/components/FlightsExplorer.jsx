@@ -50,7 +50,7 @@ export default function FlightsExplorer({
     <div className="flights-explorer-container section-container">
       {/* Header */}
       <div className="section-header-centered">
-        <span className="section-subtitle-badge">✈️ Trip.com Flight Search</span>
+        <span className="section-subtitle-badge">✈️ Safar Flight Search</span>
         <h2 className="section-title">Search & Book Worldwide Flights</h2>
         <p className="section-description">
           Find cheapest airfares, non-stop flights, and luxury cabin seats with live instant confirmation.

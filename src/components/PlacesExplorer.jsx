@@ -44,7 +44,7 @@ export default function PlacesExplorer({
     <div className="places-explorer-container section-container">
       {/* Page Header */}
       <div className="section-header-centered">
-        <span className="section-subtitle-badge">🎡 Trip.com Featured Attractions</span>
+        <span className="section-subtitle-badge">🎡 Safar Featured Attractions</span>
         <h2 className="section-title">Explore Iconic Places & Attractions</h2>
         <p className="section-description">
           Book skip-the-line passes, museum tickets, and guided tours for the world's most famous landmarks.

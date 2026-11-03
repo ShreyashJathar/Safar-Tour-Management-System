@@ -41,7 +41,7 @@ export default function TicketVoucherModal({ booking, onClose }) {
             <span className="voucher-icon">🎫</span>
             <div>
               <h3>Official E-Ticket & Confirmation Voucher</h3>
-              <p>Trip.com Global Partner Verified</p>
+              <p>Safar Global Partner Verified</p>
             </div>
           </div>
           <button className="trip-modal-close-btn" onClick={onClose}>&times;</button>

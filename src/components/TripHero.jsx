@@ -249,7 +249,7 @@ export default function TripHero({
           <div className="trip-search-bottom-strip">
             {!currentUser ? (
               <span className="incentive-text" onClick={onOpenAuth} style={{ cursor: "pointer" }}>
-                🔑 <strong style={{ color: "#2563eb", textDecoration: "underline" }}>Sign in or register</strong> to unlock exclusive Trip.com coupons & instant reward points
+                🔑 <strong style={{ color: "#2563eb", textDecoration: "underline" }}>Sign in or register</strong> to unlock exclusive Safar coupons & instant reward points
               </span>
             ) : (
               <span className="incentive-text">
@@ -270,7 +270,7 @@ export default function TripHero({
             <div className="promo-deal-card">
               <div className="deal-discount">10% OFF</div>
               <div className="deal-info">
-                <h4>Trip.com Special Offer</h4>
+                <h4>Safar Special Offer</h4>
                 <p>Valid on all 5-star hotels & luxury voyages worldwide</p>
               </div>
               <button 
