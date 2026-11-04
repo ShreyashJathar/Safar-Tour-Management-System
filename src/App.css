@@ -2,17 +2,26 @@
    SAFAR TRAVEL PLATFORM - TRIP.COM TRANSFORMATION DESIGN SYSTEM
    ========================================================================== */
 
-/* Header & Top Bar Navigation */
+/* Header & Top Bar Navigation - Glossy Glassmorphic */
 .main-header.trip-top-header {
   position: sticky !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   height: 68px !important;
-  background: var(--bg-secondary, #ffffff) !important;
-  border-bottom: 1px solid var(--border-color, #e2e8f0) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7) !important;
   z-index: 1000 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-theme="dark"] .main-header.trip-top-header {
+  background: rgba(17, 24, 39, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.05) !important;
 }
 
 .trip-top-header .header-container {
@@ -37,6 +46,11 @@
   align-items: center !important;
   gap: 8px !important;
   cursor: pointer !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.header-left-cluster .logo-section:hover {
+  transform: scale(1.04) !important;
 }
 
 .header-quick-nav {
@@ -54,18 +68,20 @@
   background: transparent !important;
   border: 1px solid transparent !important;
   cursor: pointer !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .quick-nav-pill:hover {
   color: #2563eb !important;
   background: rgba(37, 99, 235, 0.08) !important;
+  transform: translateY(-1px) !important;
 }
 
 .quick-nav-pill.active {
   color: #2563eb !important;
-  background: rgba(37, 99, 235, 0.12) !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14) 0%, rgba(37, 99, 235, 0.06) 100%) !important;
   border-color: rgba(37, 99, 235, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12) !important;
 }
 
 .trip-header-actions {
@@ -208,14 +224,22 @@
   min-height: calc(100vh - 68px) !important;
 }
 
-/* Left Vertical Navigation Sidebar */
+/* Left Vertical Navigation Sidebar - Glossy Glassmorphism */
 .trip-sidebar {
   width: 220px !important;
   min-width: 220px !important;
   flex-shrink: 0 !important;
-  background: var(--bg-secondary, #ffffff) !important;
-  border-right: 1px solid var(--border-color, #e2e8f0) !important;
-  padding: 16px 10px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border-right: 1px solid rgba(226, 232, 240, 0.75) !important;
+  padding: 18px 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-theme="dark"] .trip-sidebar {
+  background: rgba(17, 24, 39, 0.72) !important;
+  border-right-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .trip-sidebar-inner {
@@ -229,7 +253,7 @@
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 4px !important;
+  gap: 6px !important;
 }
 
 .trip-nav-item {
@@ -242,38 +266,44 @@
   align-items: center !important;
   gap: 12px !important;
   padding: 10px 14px !important;
-  border-radius: 8px !important;
+  border-radius: 12px !important;
   background: transparent !important;
-  border: none !important;
+  border: 1px solid transparent !important;
   font-size: 0.92rem !important;
   font-weight: 500 !important;
   color: var(--text-primary, #334155) !important;
   cursor: pointer !important;
   text-align: left !important;
-  transition: all 0.15s ease !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   position: relative !important;
+  overflow: hidden !important;
 }
 
 .trip-nav-btn:hover {
   background: rgba(37, 99, 235, 0.08) !important;
   color: #2563eb !important;
+  transform: translateX(4px) !important;
+  border-color: rgba(37, 99, 235, 0.15) !important;
 }
 
 .trip-nav-btn.active {
-  background: rgba(37, 99, 235, 0.12) !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14) 0%, rgba(59, 130, 246, 0.06) 100%) !important;
   color: #2563eb !important;
   font-weight: 700 !important;
+  border-color: rgba(37, 99, 235, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
 }
 
 .trip-nav-btn.active::before {
   content: "" !important;
   position: absolute !important;
   left: 0 !important;
-  top: 6px !important;
-  bottom: 6px !important;
+  top: 8px !important;
+  bottom: 8px !important;
   width: 4px !important;
-  background: #2563eb !important;
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%) !important;
   border-radius: 0 4px 4px 0 !important;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.5) !important;
 }
 
 .trip-nav-icon {
@@ -308,102 +338,178 @@
    ========================================================================== */
 
 .trip-hero-section {
-  background: linear-gradient(135deg, #0052d4 0%, #4364f7 50%, #6fb1fc 100%) !important;
-  border-radius: 20px !important;
-  padding: 36px 36px 44px !important;
+  position: relative !important;
+  background: linear-gradient(135deg, #0245b5 0%, #1e40af 35%, #2563eb 70%, #38bdf8 100%) !important;
+  border-radius: 24px !important;
+  padding: 38px 40px 48px !important;
   color: #ffffff !important;
   margin-bottom: 32px !important;
-  box-shadow: 0 12px 35px rgba(0, 82, 212, 0.25) !important;
+  box-shadow: 0 20px 45px -10px rgba(2, 69, 181, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  overflow: hidden !important;
+}
+
+.trip-hero-section::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -40% !important;
+  right: -15% !important;
+  width: 500px !important;
+  height: 500px !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 65%) !important;
+  pointer-events: none !important;
+  animation: floatSlow 10s ease-in-out infinite alternate !important;
 }
 
 .trip-hero-headline {
-  font-size: 2.2rem !important;
+  font-size: 2.3rem !important;
   font-weight: 800 !important;
-  margin: 0 0 10px 0 !important;
-  letter-spacing: -0.5px !important;
+  margin: 0 0 12px 0 !important;
+  letter-spacing: -0.6px !important;
   color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18) !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .trip-guarantee-ribbon {
   display: flex !important;
   align-items: center !important;
-  gap: 14px !important;
+  gap: 16px !important;
   font-size: 0.92rem !important;
   font-weight: 500 !important;
   color: #e0f2fe !important;
   margin-bottom: 24px !important;
   flex-wrap: wrap !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .trip-guarantee-ribbon .divider {
   opacity: 0.6 !important;
 }
 
-/* Floating White Search Box Card */
+/* Floating White Search Box Card - Glossy Crystal Glass */
 .trip-search-box-card {
-  background: #ffffff !important;
+  position: relative !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
   color: #0f172a !important;
-  border-radius: 16px !important;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22) !important;
-  padding: 20px 24px 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 22px 55px -10px rgba(15, 23, 42, 0.28), inset 0 1px 1px 0 rgba(255, 255, 255, 1) !important;
+  padding: 22px 26px 18px !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  z-index: 2 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-theme="dark"] .trip-search-box-card {
+  background: rgba(21, 25, 35, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
 }
 
 .trip-service-tabs-header {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  padding-bottom: 12px !important;
-  margin-bottom: 16px !important;
+  gap: 10px !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  padding-bottom: 14px !important;
+  margin-bottom: 18px !important;
   overflow-x: auto !important;
+}
+
+[data-theme="dark"] .trip-service-tabs-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .trip-tab-btn {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  background: none !important;
-  border: none !important;
-  padding: 8px 16px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  padding: 8px 18px !important;
   font-size: 0.95rem !important;
   font-weight: 600 !important;
   color: #475569 !important;
   cursor: pointer !important;
-  border-radius: 8px !important;
-  transition: all 0.15s ease !important;
+  border-radius: 12px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   white-space: nowrap !important;
+  position: relative !important;
 }
 
 .trip-tab-btn:hover {
-  background: #f1f5f9 !important;
+  background: rgba(37, 99, 235, 0.08) !important;
   color: #2563eb !important;
+  transform: translateY(-1px) !important;
 }
 
 .trip-tab-btn.active {
   color: #2563eb !important;
-  background: rgba(37, 99, 235, 0.08) !important;
-  border-bottom: 2px solid #2563eb !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .trip-tab-btn {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .trip-tab-btn.active {
+  color: #60a5fa !important;
+  background: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
 }
 
 .trip-search-inputs-row {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
-  background: #f8fafc !important;
-  padding: 8px !important;
-  border-radius: 12px !important;
-  border: 1px solid #e2e8f0 !important;
+  background: rgba(241, 245, 249, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  padding: 10px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+[data-theme="dark"] .trip-search-inputs-row {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .search-input-unit {
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
-  padding: 8px 14px !important;
-  background: #ffffff !important;
-  border-radius: 8px !important;
-  border: 1px solid #cbd5e1 !important;
+  padding: 10px 14px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-theme="dark"] .search-input-unit {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.search-input-unit:hover {
+  border-color: #93c5fd !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+.search-input-unit:focus-within {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), 0 6px 16px rgba(37, 99, 235, 0.1) !important;
+  transform: translateY(-2px) !important;
 }
 
 .search-input-unit label {
@@ -413,6 +519,10 @@
   color: #64748b !important;
   margin-bottom: 3px !important;
   letter-spacing: 0.3px !important;
+}
+
+[data-theme="dark"] .search-input-unit label {
+  color: #94a3b8 !important;
 }
 
 .search-input-unit .input-flex {
@@ -434,27 +544,56 @@
   box-shadow: none !important;
 }
 
+[data-theme="dark"] .search-input-unit input,
+[data-theme="dark"] .search-input-unit select {
+  color: #f8fafc !important;
+}
+
+/* Glossy Action Button with Specular Sheen Animation */
 .trip-search-action-btn {
+  position: relative !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 8px !important;
-  background: #2563eb !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%) !important;
   color: #ffffff !important;
-  border: none !important;
-  border-radius: 10px !important;
-  padding: 16px 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 12px !important;
+  padding: 16px 36px !important;
   font-size: 1.05rem !important;
   font-weight: 700 !important;
   cursor: pointer !important;
-  transition: all 0.2s ease !important;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
   flex-shrink: 0 !important;
+  overflow: hidden !important;
+}
+
+.trip-search-action-btn::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -50% !important;
+  left: -75% !important;
+  width: 50% !important;
+  height: 200% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent) !important;
+  transform: rotate(25deg) !important;
+  transition: all 0.75s ease !important;
 }
 
 .trip-search-action-btn:hover {
-  background: #1d4ed8 !important;
-  transform: translateY(-1px) !important;
+  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 50%, #1e40af 100%) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 14px 32px -4px rgba(37, 99, 235, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+}
+
+.trip-search-action-btn:hover::after {
+  left: 130% !important;
+}
+
+.trip-search-action-btn:active {
+  transform: translateY(0) scale(0.98) !important;
 }
 
 .trip-search-bottom-strip {
@@ -465,7 +604,7 @@
 }
 
 /* ==========================================================================
-   PROMO CARDS SHELF
+   PROMO CARDS SHELF - GLOSSY CRYSTAL CARDS
    ========================================================================== */
 
 .trip-promo-shelf {
@@ -477,10 +616,11 @@
 }
 
 .trip-promo-shelf .shelf-header h3 {
-  font-size: 1.2rem !important;
+  font-size: 1.25rem !important;
   font-weight: 700 !important;
   margin: 0 !important;
   color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
 .trip-promo-shelf .shelf-subtitle {
@@ -495,28 +635,52 @@
 }
 
 .promo-deal-card {
-  background: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(8px) !important;
-  border-radius: 12px !important;
-  padding: 16px !important;
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.88) 100%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border-radius: 16px !important;
+  padding: 18px !important;
   color: #0f172a !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+}
+
+[data-theme="dark"] .promo-deal-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  color: #f8fafc !important;
+}
+
+.promo-deal-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 20px 40px -8px rgba(37, 99, 235, 0.25), inset 0 1px 2px rgba(255, 255, 255, 1) !important;
+  border-color: rgba(59, 130, 246, 0.45) !important;
+}
+
+[data-theme="dark"] .promo-deal-card:hover {
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.2) !important;
 }
 
 .deal-discount {
   display: inline-block !important;
   align-self: flex-start !important;
-  background: #fee2e2 !important;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
   color: #dc2626 !important;
   font-weight: 800 !important;
   font-size: 0.82rem !important;
-  padding: 4px 10px !important;
-  border-radius: 6px !important;
-  margin-bottom: 8px !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  margin-bottom: 10px !important;
+  border: 1px solid rgba(220, 38, 38, 0.2) !important;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.1) !important;
 }
 
 .deal-info h4 {
@@ -526,6 +690,10 @@
   color: #0f172a !important;
 }
 
+[data-theme="dark"] .deal-info h4 {
+  color: #f8fafc !important;
+}
+
 .deal-info p {
   font-size: 0.8rem !important;
   color: #64748b !important;
@@ -533,28 +701,39 @@
   line-height: 1.4 !important;
 }
 
+[data-theme="dark"] .deal-info p {
+  color: #94a3b8 !important;
+}
+
 .copy-code-btn {
-  background: #f1f5f9 !important;
+  background: rgba(241, 245, 249, 0.9) !important;
   border: 1px dashed #2563eb !important;
   color: #2563eb !important;
-  padding: 8px 12px !important;
-  border-radius: 6px !important;
+  padding: 9px 14px !important;
+  border-radius: 8px !important;
   font-weight: 700 !important;
   font-size: 0.82rem !important;
   cursor: pointer !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
 .copy-code-btn:hover {
-  background: #2563eb !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
   color: #ffffff !important;
+  border-style: solid !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
 }
 
 .copy-code-btn.copied {
-  background: #10b981 !important;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
   border-color: #10b981 !important;
+  border-style: solid !important;
   color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35) !important;
 }
 
 /* ==========================================================================
@@ -1337,4 +1516,150 @@
 
 [data-theme="dark"] .theme-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ==========================================================================
+   GLOSSY EFFECTS & FLUID ANIMATIONS SYSTEM
+   ========================================================================== */
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes sweepSheen {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
+@keyframes glossyModalEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.93) translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.6);
+  }
+}
+
+/* Glossy Cards (Tours, Hotels, Places) */
+.tour-card,
+.hotel-card,
+.place-card {
+  position: relative !important;
+  border-radius: 18px !important;
+  background: var(--bg-secondary, #ffffff) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
+  overflow: hidden !important;
+}
+
+[data-theme="dark"] .tour-card,
+[data-theme="dark"] .hotel-card,
+[data-theme="dark"] .place-card {
+  background: rgba(21, 25, 35, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+.tour-card:hover,
+.hotel-card:hover,
+.place-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: 0 24px 50px -10px rgba(37, 99, 235, 0.2), inset 0 1px 2px rgba(255, 255, 255, 1) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+[data-theme="dark"] .tour-card:hover,
+[data-theme="dark"] .hotel-card:hover,
+[data-theme="dark"] .place-card:hover {
+  box-shadow: 0 25px 55px -10px rgba(0, 0, 0, 0.75), 0 0 20px rgba(59, 130, 246, 0.2) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Glossy Floating Badges */
+.tour-category-tag,
+.hotel-stars-tag,
+.place-category-badge {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 30px !important;
+}
+
+[data-theme="dark"] .tour-category-tag,
+[data-theme="dark"] .hotel-stars-tag,
+[data-theme="dark"] .place-category-badge {
+  background: rgba(15, 23, 42, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
+}
+
+/* Glossy Modals */
+.trip-modal-backdrop {
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  animation: fadeIn 0.25s ease forwards !important;
+}
+
+.trip-modal-card,
+.ticket-modal-card {
+  animation: glossyModalEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .trip-modal-card,
+[data-theme="dark"] .ticket-modal-card {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Primary and Action Buttons Gloss */
+.btn-primary,
+.login-submit-btn,
+.view-ticket-action-btn {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover,
+.login-submit-btn:hover,
+.view-ticket-action-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 24px -2px rgba(4, 169, 125, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+}
+
+.btn-primary:active,
+.login-submit-btn:active,
+.view-ticket-action-btn:active {
+  transform: translateY(0) scale(0.98) !important;
 }
